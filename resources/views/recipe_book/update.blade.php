@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 
 <html lang="en-US">
-
 <head>
     <meta name="justapinch" content="nopinch">
     <meta charset="UTF-8">
     <script async="" src="//www.googletagmanager.com/gtm.js?id=GTM-T4LMV2F"></script>
     <script async=""
-        src="https://ads.adthrive.com/sites/52e41fac28963d1e058a110e/ads.min.js?referrer=https%3A%2F%2Fdamndelicious.net%2F&amp;cb=56">
-    </script>
+        src="https://ads.adthrive.com/sites/52e41fac28963d1e058a110e/ads.min.js?referrer=https%3A%2F%2Fdamndelicious.net%2F&amp;cb=56"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -487,14 +485,13 @@
         }
     </style>
     <meta name="robots" content="noai, noimageai">
-    <link rel="icon" href="https://s23209.pcdn.co/wp-content/uploads/2020/09/cropped-Untitled1-32x32.png"
-        sizes="32x32">
+    <link rel="icon" href="https://s23209.pcdn.co/wp-content/uploads/2020/09/cropped-Untitled1-32x32.png" sizes="32x32">
     <link rel="icon" href="https://s23209.pcdn.co/wp-content/uploads/2020/09/cropped-Untitled1-192x192.png"
         sizes="192x192">
     <link rel="apple-touch-icon" href="https://s23209.pcdn.co/wp-content/uploads/2020/09/cropped-Untitled1-180x180.png">
     <meta name="msapplication-TileImage"
         content="https://s23209.pcdn.co/wp-content/uploads/2020/09/cropped-Untitled1-270x270.png">
-
+    
     <style type="text/css" id="wp-custom-css">
         .wprm-recipe-ingredients-container .span_content ul li:before {
             color: #fff;
@@ -664,7 +661,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-
 <body class="home blog adthrive-device-desktop">
     <div id="header" class="header">
         <div class="wrap">
@@ -692,13 +688,15 @@
                             <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
-                    <a href="http://pinterest.com/damndelicious/" title="Pinterest" target="_blank" rel="noopener">
+                    <a href="http://pinterest.com/damndelicious/" title="Pinterest" target="_blank"
+                        rel="noopener">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fab fa-pinterest-p fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
-                    <a href="http://instagram.com/damn_delicious" title="Instagram" target="_blank" rel="noopener">
+                    <a href="http://instagram.com/damn_delicious" title="Instagram" target="_blank"
+                        rel="noopener">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
@@ -735,11 +733,8 @@
                 <ul id="mainmenu" class="main-menu">
 
                     <li class="menu-item menu-item-type-post_type_archive menu-item-object-video menu-item-35739">
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-                    <li class="menu-item menu-item-type-post_type_archive menu-item-object-video menu-item-35739">
-                        <a href="{{ route('userRecipes') }}">My Recipes</a>
-                    </li>
+                        <a href="{{ route('home') }}">Home</a></li>
+                    
                 </ul>
             </nav>
 
@@ -748,32 +743,34 @@
     </div>
 
     <div class="container mx-auto my-8 p-8 bg-white shadow-lg rounded-md">
-        <h1 class="text-3xl font-bold mb-6">Ajouter une Recette</h1>
+        <h1 class="text-3xl font-bold mb-6">Modifier une Recette</h1>
 
         <!-- Formulaire d'ajout de recette -->
-        <form action="{{ route('recipe_book.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('recipe_book.update', $recipe->id) }}" method="post" enctype="multipart/form-data">
             @csrf
+            @method('PUT') {{-- Add this line to use the PUT method --}}
             <div class="mb-4">
                 <label for="titre" class="block text-sm font-medium text-gray-600">Titre de la recette</label>
-                <input type="text" id="titre" name="titre" class="mt-1 p-2 w-full border rounded-md">
+                <input type="text" id="titre" name="titre" value="{{ $recipe->title }}" class="mt-1 p-2 w-full border rounded-md">
             </div>
-
+        
             <div class="mb-4">
                 <label for="description" class="block text-sm font-medium text-gray-600">Description</label>
-                <textarea id="description" name="description" rows="4" class="mt-1 p-2 w-full border rounded-md"></textarea>
+                <textarea id="description" name="description" rows="4" class="mt-1 p-2 w-full border rounded-md">{{ $recipe->description }}</textarea>
             </div>
             <div class="mb-4">
                 <label for="image" class="block text-sm font-medium text-gray-600">Image de la recette</label>
                 <input type="file" id="image" name="image" accept="image/*" class="mt-1">
+                <img src="{{ asset('storage/' . $recipe->image) }}" alt="Current Image" class="mt-2 h-32">
             </div>
-
+            <!-- Add similar code for other fields -->
+        
             <div class="mt-6">
-                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Ajouter
-                    la recette</button>
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Modifier la recette</button>
             </div>
         </form>
+        
     </div>
 
 </body>
-
 </html>

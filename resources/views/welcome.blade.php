@@ -676,7 +676,7 @@
         <div id="cmtb" style="background-color: rgba(255,255,255, 0.95);">
 
             <div id="cmfw">
-                <form method="get" class="search-form" action="{{url('search')}}">
+                <form method="get" class="search-form" action="{{ url('search') }}">
                     <input type="text" class="search-input search-field" name="query" value=""
                         placeholder="search recipes" aria-label="Keywords">
                     <button type="submit" class="btn btn-success search-submit" aria-label="Submit">
@@ -733,7 +733,7 @@
 
                 <nav id="top" class="top-nav">
                     <div class="header-search">
-                        <form method="get" class="search-form" action="{{url('/search')}}">
+                        <form method="get" class="search-form" action="{{ url('/search') }}">
                             <input type="text" class="search-input search-field" name="query" value=""
                                 placeholder="search recipes" aria-label="Keywords">
                             <button type="submit" class="btn btn-success search-submit" aria-label="Submit">
@@ -748,7 +748,7 @@
                     <ul id="mainmenu" class="main-menu">
                         <li
                             class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-655">
-                            <a href="{{url('home')}}" aria-current="page">Home</a>
+                            <a href="{{ url('home') }}" aria-current="page">Home</a>
                         </li>
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -801,10 +801,6 @@
                     <p>Come join me in my culinary adventures where we'll be using <em>simple, fresh ingredients</em>
                         and transforming them into sophisticated and elegant meals for the <em>everyday home cook</em>.
                     </p>
-
-                    <div class="more">
-                        <a href="/about-me/">More About Me »</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -814,7 +810,7 @@
 
             <div id="content" class="span_content span_content_full">
 
-                <h2 class="divider"><span>Latest Recipes</span></h2>
+                <h2 class="divider"><span>Recipes</span></h2>
                 <div class="teaser-posts teaser-posts-3col">
 
                     @foreach ($recipes as $recipe)
@@ -835,137 +831,14 @@
                             </div>
                         </article> <!-- end .teaserpost -->
                     @endforeach
-
-
-
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <div class="wrap">
-                <div id="custom_html-9"
-                    class="widget_text widget-odd widget-first widget-1 subscribe footer-widget widget_custom_html">
-                    <div class="textwidget custom-html-widget"><img class="alignnone size-full wp-image-35422"
-                            src="https://staging.damndelicious.net/wp-content/themes/damndelicious2021/images/subscribe-image.jpg"
-                            alt="Top 12 Recipes" width="480" height="600">
+            <div style="text-align: center;">
+                <p><strong>©2024<i class="icon"></i> Damn Delicious.</strong> All Rights Reserved.</p>
 
-                        <div class="caption">
-
-                            <h2>
-                                Want More Damn Delicious?
-                            </h2>
-
-                            <p>Sign up for FREE quick and easy weeknight dinners delivered right to your inbox! You'll
-                                receive new recipes as soon as they are published, plus our top 12 recipes free!</p>
-
-                            <form
-                                action="https://damndelicious.us5.list-manage.com/subscribe/post?u=e81eb9facd120894de0e61e0d&amp;id=ab2b965540&amp;f_id=00dec2e1f0"
-                                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                                class="email-form validate" target="_self" novalidate="">
-                                <input type="email" name="EMAIL" class="required email-input" id="mce-EMAIL"
-                                    required="" value="" placeholder="email address">
-                                <button type="submit" class="email-submit" aria-label="Subscribe">
-                                    Subscribe <i class="far fa-arrow-right"></i>
-                                </button>
-
-                                <div hidden=""><input type="hidden" name="tags" value="9"></div>
-
-                                <div class="response" id="mce-error-response" style="display: none;"></div>
-                                <div class="response" id="mce-success-response" style="display: none;"></div>
-                                <div aria-hidden="true" style="position: absolute; left: -5000px;"><input
-                                        type="text" name="b_e81eb9facd120894de0e61e0d_ab2b965540" tabindex="-1"
-                                        value=""></div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-                <div id="nav_menu-2" class="widget-even widget-2 footer-widget widget_nav_menu">
-                    <h2 class="widget-title">Quick Links</h2>
-                    <div class="menu-footer-1-container">
-                        <ul id="menu-footer-1" class="menu">
-                            <li id="menu-item-35957"
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35957"><a
-                                    href="https://damndelicious.net/about-me/">About</a></li>
-                            <li id="menu-item-35958"
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35958"><a
-                                    href="https://damndelicious.net/team/">Team</a></li>
-                            <li id="menu-item-35959"
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35959"><a
-                                    href="https://damndelicious.net/about-me/faq/">FAQ</a></li>
-                            <li id="menu-item-35960"
-                                class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35960"><a
-                                    href="https://damndelicious.net/press/">Press</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="nav_menu-3" class="widget-odd widget-3 footer-widget widget_nav_menu">
-                    <h2 class="widget-title">Browse</h2>
-                    <div class="menu-footer-2-container">
-                        <ul id="menu-footer-2" class="menu">
-
-                            <li id="menu-item-35962"
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35962"><a
-                                    href="https://damndelicious.net/videos/">Videos</a>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div id="nav_menu-4" class="widget-even widget-last widget-4 footer-widget widget_nav_menu">
-                    <h2 class="widget-title">Follow</h2>
-                    <div class="menu-footer-3-container">
-                        <ul id="menu-footer-3" class="menu">
-                            <li id="menu-item-35965"
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35965"><a
-                                    href="https://www.facebook.com/damndeliciousblog">Facebook</a></li>
-                            <li id="menu-item-35966"
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35966"><a
-                                    href="http://pinterest.com/damndelicious/">Pinterest</a></li>
-                            <li id="menu-item-35967"
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35967"><a
-                                    href="http://instagram.com/damn_delicious">Instagram</a></li>
-                            <li id="menu-item-35968"
-                                class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35968"><a
-                                    href="https://www.youtube.com/c/damndeliciousblog">YouTube</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <p><strong>©2024<i class="icon"></i> Damn Delicious.</strong> All Rights Reserved.</p>
-
-                    <ul id="menu-footer" class="footer-nav">
-                        <li id="menu-item-16603"
-                            class="top menu-item menu-item-type-custom menu-item-object-custom menu-item-16603"><a
-                                href="#">^ Top</a></li>
-                        <li id="menu-item-21166"
-                            class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-21166">
-                            <a href="{{ route('Recipe') }}" aria-current="page">Home</a>
-                        </li>
-                        <li id="menu-item-16592"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16592"><a
-                                href="https://damndelicious.net/about-me/">About</a></li>
-                        <li id="menu-item-16602"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16602"><a
-                                href="https://damndelicious.net/recipe-index/">Browse Recipes</a></li>
-                        <li id="menu-item-16594"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16594"><a
-                                href="https://damndelicious.net/press/">Press</a></li>
-                        <li id="menu-item-27737"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-27737"><a
-                                href="https://damndelicious.net/team/">Team</a></li>
-                        <li id="menu-item-16595"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16595"><a
-                                href="https://damndelicious.net/privacy-policy/">Privacy</a></li>
-                        <li id="menu-item-35383"
-                            class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35383"><a
-                                href="https://damndelicious.net/no-ai/">NO AI</a></li>
-                    </ul>
-                    <p class="credit">Design by <a href="https://www.purrdesign.com" target="_blank"
-                            rel="nofollow noopener">Purr</a>.</p>
-                </div>
-                <div class="clear"></div>
             </div>
         </div>
         <link rel="stylesheet" id="wprm-public-css"

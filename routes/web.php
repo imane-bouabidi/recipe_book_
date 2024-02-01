@@ -27,6 +27,8 @@ Route::get('/userDashboard',[RecipeController::class,'ShowUserDashboard'])->name
 
 Route::get('/recipe_book/{id}', [RecipeController::class, 'showRecipeDetails'])->name('recipe_book.details');
 Route::delete('/recipe_book/{id}',[RecipeController::class, 'destroy'])->name('recipes.destroy');
+Route::get('/recipe_book/{id}/edit', [RecipeController::class, 'showUpdate'])->name('recipe_book.edit');
+// Route::put('/recipe_book/{id}', [RecipeController::class, 'update'])->name('recipe_book.update');
 Route::resource('recipe_book',RecipeController::class);
 Route::get('/search',[RecipeController::class, 'search']);
 

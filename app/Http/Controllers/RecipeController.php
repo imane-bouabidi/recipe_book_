@@ -14,7 +14,6 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
-        //dd($recipes);
         return view('welcome', compact('recipes'));
     }
 
@@ -40,9 +39,6 @@ public function ShowUserDashboard()
     return view('recipe_book.userDashboard', compact('recipes'));
 }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $recipe = new Recipe();
@@ -50,12 +46,10 @@ public function ShowUserDashboard()
         return view('recipe_book.create',compact('recipe'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        $validator = $request->validate([
+        $request->validate([
             'titre' => 'required|max:255', 
             'description' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -76,38 +70,44 @@ public function ShowUserDashboard()
         return redirect()->route('userRecipes')->with('success', 'Recipe deleted successfully');
 
     }
-    
-    
 
-    /**
-     * Display the specified resource.
-     */
-    public function show()
+    public function showUpdate($id)
     {
-        $recipes = Recipe::all();
-         dd($recipes);
-        //return view('welcome', compact('recipes'));
+        $recipe = Recipe::find($id);
+        return view('recipe_book.update', compact('recipe'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Recipe $recipe)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Recipe $recipe)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    public function update(Request $request, $id)
+    {
+        $recipe = Recipe::find($id);
+    
+        $request->validate([
+            'titre' => 'required|string',
+            'description' => 'required|string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', 
+        ]);
+    
+        $recipe->title = $request->input('titre');
+        $recipe->description = $request->input('description');
+    
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('recipe_images', 'public');
+            $recipe->image = $imagePath;
+        }
+    
+        $recipe->save();
+    
+        return redirect()->route('userRecipes')->with('success', 'Recipe updated successfully');
+    }
+    
+    
+
     public function destroy($id)
     {
         $recipe = Recipe::find($id);

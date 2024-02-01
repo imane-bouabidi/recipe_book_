@@ -103,7 +103,7 @@
                                     class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-black dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-white dark:hover:border-gray-800 pr-6">
                                     <span class="inline-flex justify-center items-center ml-4">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px"
-                                            viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                                            viewBox="0 0 448 512">
                                             <path fill="#ffffff"
                                                 d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
                                         </svg>
@@ -181,7 +181,7 @@
                                                     <td class="px-4 py-3">
                                                         <div class="flex items-center text-sm">
                                                             <div>
-                                                                <a href="index.php?action=showUpdateWiki&id="
+                                                                <a href="{{route('recipe_book.edit',$recipe->id)}}"
                                                                     class="px-2 py-1 font-semibold leading-tight text-black-700 bg-green-100 rounded-full dark:bg-red-700 dark:text-red-100">
                                                                     Update Recette
                                                                 </a>

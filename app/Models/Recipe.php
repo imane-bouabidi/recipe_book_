@@ -12,6 +12,6 @@ class Recipe extends Model
     {
         return $this->belongsTo(User::class, 'userid');
     }
-    protected $fillable = ['title', 'description', 'image', 'userid']; // Add 'titre' and other fields as needed
+    protected $fillable = ['title', 'description', 'image', 'userid'];
 
 }
