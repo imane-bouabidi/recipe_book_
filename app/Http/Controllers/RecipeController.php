@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Recipe;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -13,6 +14,7 @@ class RecipeController extends Controller
     public function index()
     {
         $recipes = Recipe::all();
+        //dd($recipes);
         return view('welcome', compact('recipes'));
     }
 
@@ -20,6 +22,22 @@ class RecipeController extends Controller
 {
     $recipe = Recipe::find($id);
     return view('recipe_book.details', compact('recipe'));
+}
+
+    public function search()
+{
+    $search = $_GET['query'];
+    $recipes = Recipe::where('title','LIKE','%'.$search.'%')->get();
+    return view('recipe_book.search', compact('recipes'));
+}
+
+
+
+public function ShowUserDashboard()
+{
+    $user = User::find(Auth::id());
+    $recipes = $user->recipes;
+    return view('recipe_book.userDashboard', compact('recipes'));
 }
 
     /**
@@ -55,7 +73,7 @@ class RecipeController extends Controller
     
         $recipe->save();
     
-        return redirect()->route('home')->with('success', 'Recipe added successfully!');
+        return redirect()->route('userRecipes')->with('success', 'Recipe deleted successfully');
 
     }
     
@@ -67,8 +85,8 @@ class RecipeController extends Controller
     public function show()
     {
         $recipes = Recipe::all();
-        // dd($recipes);
-        return view('welcome', compact('recipes'));
+         dd($recipes);
+        //return view('welcome', compact('recipes'));
     }
 
     /**
@@ -90,8 +108,10 @@ class RecipeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Recipe $recipe)
+    public function destroy($id)
     {
-        //
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+    return redirect()->route('userRecipes')->with('success', 'Recipe deleted successfully');
     }
 }

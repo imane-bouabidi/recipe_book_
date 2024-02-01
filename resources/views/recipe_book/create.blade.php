@@ -731,39 +731,10 @@
 
             <nav id="main" class="main-nav">
                 <ul id="mainmenu" class="main-menu">
-                    <li
-                        class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-655">
-                        <a href="https://damndelicious.net" aria-current="page">Home</a>
-                    </li>
 
                     <li class="menu-item menu-item-type-post_type_archive menu-item-object-video menu-item-35739">
                         <a href="{{ route('home') }}">Home</a></li>
-                    <li
-                        class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-30180">
-                        <a>Cookbook</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30159"><a
-                                    href="https://damndelicious.net/damn-delicious-100-super-easy-super-fast-recipes/">Damn
-                                    Delicious</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-30158"><a
-                                    href="https://damndelicious.net/damn-delicious-meal-prep-115-easy-recipes-for-low-calorie-high-energy-living/">Damn
-                                    Delicious Meal Prep</a></li>
-                        </ul>
-                    </li>
-                    <li
-                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-656">
-                        <a href="https://damndelicious.net/about-me/">About</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26771"><a
-                                    href="https://damndelicious.net/about-me/">About Chungah</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32379"><a
-                                    href="https://damndelicious.net/team/">Meet Our Team</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7270"><a
-                                    title="FAQ" href="https://damndelicious.net/about-me/faq/">FAQ</a></li>
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-659"><a
-                                    href="https://damndelicious.net/press/">Press</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>
             </nav>
 

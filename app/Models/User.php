@@ -12,6 +12,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class, 'userid');
+    }
+    
     /**
      * The attributes that are mass assignable.
      *

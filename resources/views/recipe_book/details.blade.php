@@ -774,7 +774,7 @@
                 <p>{{ $recipe->title }}</p>
                 <p style="text-align: center; position: relative;">
                     <img class="alignnone wp-image-36039 size-large"
-                        src="storage/{{ $recipe->image }}"
+                        src="{{ asset('storage/'. $recipe->image )}}"
                         width="760" height="1140"
                         sizes="(max-width: 760px) 100vw, 760px">
                 </p>

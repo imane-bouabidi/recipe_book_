@@ -676,8 +676,8 @@
         <div id="cmtb" style="background-color: rgba(255,255,255, 0.95);">
 
             <div id="cmfw">
-                <form method="get" class="search-form" action="https://damndelicious.net/">
-                    <input type="text" class="search-input search-field" name="s" value=""
+                <form method="get" class="search-form" action="{{url('search')}}">
+                    <input type="text" class="search-input search-field" name="query" value=""
                         placeholder="search recipes" aria-label="Keywords">
                     <button type="submit" class="btn btn-success search-submit" aria-label="Submit">
                         <i class="far fa-search"></i><span class="screen-reader-text">Search</span>
@@ -685,7 +685,7 @@
                 </form>
             </div>
 
-            <a href="https://damndelicious.net/" id="custom-mobile-logo-link">
+            <a href="" id="custom-mobile-logo-link">
                 <img src="https://s23209.pcdn.co/wp-content/themes/damndelicious2021/mobile-header/logo-mobile.png"
                     alt="Damn Delicious" width="190" height="40">
             </a>
@@ -733,8 +733,8 @@
 
                 <nav id="top" class="top-nav">
                     <div class="header-search">
-                        <form method="get" class="search-form" action="https://damndelicious.net/">
-                            <input type="text" class="search-input search-field" name="s" value=""
+                        <form method="get" class="search-form" action="{{url('/search')}}">
+                            <input type="text" class="search-input search-field" name="query" value=""
                                 placeholder="search recipes" aria-label="Keywords">
                             <button type="submit" class="btn btn-success search-submit" aria-label="Submit">
                                 <i class="far fa-search"></i><span class="screen-reader-text">Search</span>
@@ -748,7 +748,7 @@
                     <ul id="mainmenu" class="main-menu">
                         <li
                             class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-655">
-                            <a href="https://damndelicious.net" aria-current="page">Home</a>
+                            <a href="{{url('home')}}" aria-current="page">Home</a>
                         </li>
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -761,9 +761,11 @@
                                 </form>
                             </li>
                         @endguest
-                        <li class="menu-item menu-item-type-post_type_archive menu-item-object-video menu-item-35739">
-                            <a href="{{ route('createRecipe') }}">New Recipe</a>
-                        </li>
+                        @auth
+                            <li class="menu-item menu-item-type-post_type_archive menu-item-object-video menu-item-35739">
+                                <a href="{{ route('userRecipes') }}">My Recipes</a>
+                            </li>
+                        @endauth
                     </ul>
                 </nav>
 
@@ -815,22 +817,25 @@
                 <h2 class="divider"><span>Latest Recipes</span></h2>
                 <div class="teaser-posts teaser-posts-3col">
 
-                    @foreach ($recipes as $recipe)     
-                    <article class="post teaser-post even">
-                        <a href="" rel="" title="{{ $recipe->title }}">
-                            <img width="360" height="540" src="storage/{{ $recipe->image }}" class="attachment-teaser size-teaser wp-post-image" alt="{{ $recipe->title }}" data-pin-nopin="true" decoding="async" loading="lazy">
-                            <div class="post-meta">{{ $recipe->created_at->format('F j, Y') }}</div>
-                            <h3 class="post-title">{{ $recipe->title }}</h3>
-                        </a>
-                        <div class="excerpt">
-                            <p>{{ $recipe->description }}</p>
-                        </div>
-                        <div class="more">
-                            <a href="{{ route('recipe_book.details', $recipe->id) }}" rel="bookmark" class="more-link">Read More <i class="far fa-arrow-right"></i></a>
-                        </div>
-                    </article> <!-- end .teaserpost -->
-                @endforeach
-                
+                    @foreach ($recipes as $recipe)
+                        <article class="post teaser-post even">
+                            <a href="" rel="" title="{{ $recipe->title }}">
+                                <img width="360" height="540" src="storage/{{ $recipe->image }}"
+                                    class="attachment-teaser size-teaser wp-post-image" alt="{{ $recipe->title }}"
+                                    data-pin-nopin="true" decoding="async" loading="lazy">
+                                <div class="post-meta">{{ $recipe->created_at->format('F j, Y') }}</div>
+                                <h3 class="post-title">{{ $recipe->title }}</h3>
+                            </a>
+                            <div class="excerpt">
+                                <p>{{ $recipe->description }}</p>
+                            </div>
+                            <div class="more">
+                                <a href="{{ route('recipe_book.details', $recipe->id) }}" rel="bookmark"
+                                    class="more-link">Read More <i class="far fa-arrow-right"></i></a>
+                            </div>
+                        </article> <!-- end .teaserpost -->
+                    @endforeach
+
 
 
                 </div>
@@ -936,7 +941,7 @@
                                 href="#">^ Top</a></li>
                         <li id="menu-item-21166"
                             class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-21166">
-                            <a href="https://damndelicious.net/" aria-current="page">Home</a>
+                            <a href="{{ route('Recipe') }}" aria-current="page">Home</a>
                         </li>
                         <li id="menu-item-16592"
                             class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16592"><a
@@ -963,43 +968,6 @@
                 <div class="clear"></div>
             </div>
         </div>
-
-        <script data-no-optimize="1" data-cfasync="false">
-            (function() {
-                var clsElements = document.querySelectorAll("script[id^='cls-']");
-                window.adthriveCLS && clsElements && clsElements.length === 0 ? window.adthriveCLS.injectedFromPlugin =
-                    false : "";
-            })();
-        </script>
-        <script>
-            window.wprm_recipes = {
-                "recipe-36041": {
-                    "id": 36041,
-                    "type": "food",
-                    "name": "One Pot Greek Chicken and Orzo"
-                },
-                "recipe-36034": {
-                    "id": 36034,
-                    "type": "food",
-                    "name": "Chicken and Wild Rice Soup"
-                },
-                "recipe-36011": {
-                    "id": 36011,
-                    "type": "food",
-                    "name": "Creamy Sausage Gnocchi"
-                },
-                "recipe-35990": {
-                    "id": 35990,
-                    "type": "food",
-                    "name": "Instant Pot Coq Au Vin"
-                },
-                "recipe-35914": {
-                    "id": 35914,
-                    "type": "food",
-                    "name": "Mushroom Risotto"
-                }
-            }
-        </script>
         <link rel="stylesheet" id="wprm-public-css"
             href="https://s23209.pcdn.co/wp-content/plugins/wp-recipe-maker/dist/public-modern.css?ver=9.1.1"
             type="text/css" media="all">
