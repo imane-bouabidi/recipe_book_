@@ -763,6 +763,14 @@
                 <textarea id="description" name="description" rows="4" class="mt-1 p-2 w-full border rounded-md"></textarea>
             </div>
             <div class="mb-4">
+                <label for="category" class="block text-sm font-medium text-gray-600">ICategory</label>
+                <select id="category" name="category">
+                    @foreach ($categories as $category)
+                    <option value="{{$category}}">{{$category}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-4">
                 <label for="image" class="block text-sm font-medium text-gray-600">Image de la recette</label>
                 <input type="file" id="image" name="image" accept="image/*" class="mt-1">
             </div>

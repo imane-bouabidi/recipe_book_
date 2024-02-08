@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class RecipeController extends Controller
 {
     public function indexAction(){
-        return view('recipe_book.create');
+        $categories = ['breakfast','lunch','dinner'];
+        return view('recipe_book.create', compact('categories'));
     }
     public function index()
     {
@@ -26,7 +27,7 @@ class RecipeController extends Controller
     public function search()
 {
     $search = $_GET['query'];
-    $recipes = Recipe::where('title','LIKE','%'.$search.'%')->get();
+    $recipes = Recipe::where('title','LIKE','%'.$search.'%')->orwhere('description','LIKE','%'.$search.'%')->get();
     return view('recipe_book.search', compact('recipes'));
 }
 
@@ -52,12 +53,14 @@ public function ShowUserDashboard()
         $request->validate([
             'titre' => 'required|max:255', 
             'description' => 'required',
+            'category' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
         $recipe = new Recipe([
             'title' => $request->input('titre'),
             'description' => $request->input('description'),
+            'category' => $request->input('category'),
             'userid' => Auth::id(),
         ]);
         if ($request->hasFile('image')) {
@@ -67,7 +70,7 @@ public function ShowUserDashboard()
     
         $recipe->save();
     
-        return redirect()->route('userRecipes')->with('success', 'Recipe deleted successfully');
+        // return redirect()->route('userRecipes')->with('success', 'Recipe deleted successfully');
 
     }
 
