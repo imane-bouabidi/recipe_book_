@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
 
 //Route::view('/home','welcome')->name('home');
 Route::get('/home', [RecipeController::class, 'index'])->name('home');
+Route::get('/', [RecipeController::class, 'index'])->name('home');
 
 Route::view('/details','recipe_book.details')->name('details');
 

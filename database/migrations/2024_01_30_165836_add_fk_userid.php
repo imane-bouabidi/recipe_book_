@@ -16,7 +16,7 @@ return new class extends Migration
         
             $table->foreign('userid')
                 ->references('id')
-                ->on('users') // Assuming your users table is named 'users'
+                ->on('users')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
